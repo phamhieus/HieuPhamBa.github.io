@@ -205,6 +205,48 @@ $(function() {
     });
     
     
+    //====== Slick product image
+    
+    $('.product-image').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: '<span class="prev"><i class="lni-chevron-left"></i></span>',
+        nextArrow: '<span class="next"><i class="lni-chevron-right"></i></i></span>',
+        dots: false,
+    });
+    
+    
+    //====== Nice Number
+    
+    $('input[type="number"]').niceNumber({
+        
+    });
+
+    
+    //=====  Rating selection
+    
+    var $star_rating = $('.star-rating .fa');
+
+    var SetRatingStar = function() {
+      return $star_rating.each(function() {
+        if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+          return $(this).removeClass('fa-star-o').addClass('fa-star');
+        } else {
+          return $(this).removeClass('fa-star').addClass('fa-star-o');
+        }
+      });
+    };
+
+    $star_rating.on('click', function() {
+      $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+      return SetRatingStar();
+    });
+
+    SetRatingStar();
+    
+    
     
     
 });
